@@ -48,21 +48,21 @@ class AppServiceProvider extends ServiceProvider {
             /** @var User $user */
             $user = Auth::user();
 
-            $event->menu->add(['text' => 'Home', 'icon' => 'dashboard', 'url' => route("home")]);
-//            if ($user->hasPermissions(["user-view", "role-view", "permission-view"])) {
+            $event->menu->add(['text' => 'Home', 'icon' => 'fa fa-fw fa-home', 'url' => route("home")]);
+            if ($user->hasPermissions(["user-view", "role-view", "permission-view"])) {
                 $event->menu->add('ADMIN SYSTEM');
                 $submenu = [];
-//                if ($user->hasPermissions("user-view")) {
-                    $submenu[] = ['text' => 'Users', 'icon' => 'users', 'url' => route("admin.users.index")];
-//                }
-//                if ($user->hasPermissions("role-view")) {
-                    $submenu[] = ['text' => 'Roles', 'icon' => 'user', 'url' => route("admin.roles.index")];
-//                }
-//                if ($user->hasPermissions("permission-view")) {
-                    $submenu[] = ['text' => 'Permissions', 'icon' => 'street-view', 'url' => route("admin.permissions.index")];
-//                }
-                $event->menu->add(['text' => 'Users & Permissions', 'icon' => 'gears', 'class' => 'treeview', 'submenu_class' => 'treeview-menu', 'submenu' => $submenu]);
-//            }
+                if ($user->hasPermissions("user-view")) {
+                    $submenu[] = ['text' => 'Users', 'icon' => 'fa fa-fw fa-users', 'url' => route("admin.users.index")];
+                }
+                if ($user->hasPermissions("role-view")) {
+                    $submenu[] = ['text' => 'Roles', 'icon' => 'fa fa-fw fa-user', 'url' => route("admin.roles.index")];
+                }
+                if ($user->hasPermissions("permission-view")) {
+                    $submenu[] = ['text' => 'Permissions', 'icon' => 'fa fa-fw fa-user-secret', 'url' => route("admin.permissions.index")];
+                }
+                $event->menu->add(['text' => 'Users & Permissions', 'icon' => 'fa fa-fw fa-street-view', 'class' => 'treeview', 'submenu_class' => 'treeview-menu', 'submenu' => $submenu]);
+            }
         });
     }
 }
