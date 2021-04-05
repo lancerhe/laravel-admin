@@ -178,7 +178,7 @@ throw new Error('AdminLTE requires jQuery')
         expanding: 'expanding.boxwidget',
         expanded: 'expanded.boxwidget',
         removing: 'removing.boxwidget',
-        removed: 'removed.boxwidget'        
+        removed: 'removed.boxwidget'
     };
 
   // BoxWidget Class Definition
@@ -553,7 +553,8 @@ throw new Error('AdminLTE requires jQuery')
   var Default = {
     collapseScreenSize   : 767,
     expandOnHover        : false,
-    expandTransitionDelay: 200
+    expandTransitionDelay: 200,
+    enableRemember: true,
   };
 
   var Selector = {
@@ -609,6 +610,16 @@ throw new Error('AdminLTE requires jQuery')
     });
   };
 
+  PushMenu.prototype.remember = function(name, value) {
+    if (!this.options.enableRemember)
+      return;
+
+    var d = new Date();
+    d.setTime(d.getTime() + (7 * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = name + "=" + value + "; " + expires + "; path=/;";
+  };
+
   PushMenu.prototype.toggle = function () {
     var windowWidth = $(window).width();
     var isOpen      = !$('body').hasClass(ClassName.collapsed);
@@ -619,8 +630,10 @@ throw new Error('AdminLTE requires jQuery')
 
     if (!isOpen) {
       this.open();
+      this.remember("collapse_sidebar", "0");
     } else {
       this.close();
+      this.remember("collapse_sidebar", "1");
     }
   };
 
