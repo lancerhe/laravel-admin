@@ -84,4 +84,13 @@ class User extends \Illuminate\Foundation\Auth\User {
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function isAdmin(): bool {
+        return $this->attributes["user_id"] == 1;
+    }
+
+    public function gravatar($size = '100') {
+        $hash = md5(strtolower(trim($this->attributes['email'])));
+        return "https://sdn.geekzu.org/avatar/$hash?s=$size";
+    }
 }

@@ -18,7 +18,9 @@ Route::get('/', function () {
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('/profile', 'ProfileController@index')->name('profile.index');
+Route::get('/profile/edit', 'ProfileController@edit')->name('profile.edit');
+Route::patch('/profile', 'ProfileController@update')->name('profile.update');
 
 // users
 Route::get('/admin/users', 'Admin\UsersController@index')->middleware('permission:user-view')->name('admin.users.index');
