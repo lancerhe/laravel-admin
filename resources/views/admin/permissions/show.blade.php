@@ -1,4 +1,4 @@
-@php ($functionTitle = 'Permission Information')
+@php ($functionTitle = '权限详情')
 
 @extends('layouts.page')
 
@@ -22,19 +22,19 @@
                 <!-- /.box-header -->
                 <div class="box-body form-horizontal">
                     <div class="form-group">
-                        <label for="prefix" class="col-sm-2 control-label">Prefix</label>
+                        <label for="prefix" class="col-sm-2 control-label">分组</label>
                         <div class="col-sm-6">
                             <p class="text-input">{{ $permission->prefix }}</p>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Name</label>
+                        <label for="name" class="col-sm-2 control-label">权限标识符</label>
                         <div class="col-sm-6">
                             <p class="text-input">{{ $permission->name }}</p>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="slug" class="col-sm-2 control-label">Slug</label>
+                        <label for="slug" class="col-sm-2 control-label">权限名</label>
                         <div class="col-sm-6">
                             <p class="text-input">{{ $permission->slug }}</p>
                         </div>
@@ -43,8 +43,8 @@
                 <!-- /.box-body -->
 
                 <div class="box-footer">
-                    <a type="button" class="btn btn-primary" href="{{ route('admin.permissions.edit', $permission->id) }}">Edit</a>
-                    <a type="button" class="btn btn-default" href="{{ route('admin.permissions.index') }}">Back to List</a>
+                    <a type="button" class="btn btn-primary" href="{{ route('admin.permissions.edit', $permission->id) }}">编辑</a>
+                    <a type="button" class="btn btn-default" href="{{ route('admin.permissions.index') }}">返回列表</a>
                 </div>
             </div>
             <!-- /.box -->

@@ -1,4 +1,4 @@
-@php ($functionTitle = 'New Role')
+@php ($functionTitle = '添加新角色')
 
 @extends('layouts.page')
 
@@ -24,22 +24,22 @@
                     {{ csrf_field() }}
                     <div class="box-body">
                         <div class="form-group">
-                            <label for="name" class="col-sm-2 control-label">Name</label>
+                            <label for="name" class="col-sm-2 control-label">角色标识符</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" name="name" id="name" placeholder="Enter name" autocomplete="off">
+                                <input type="text" class="form-control" name="name" id="name" placeholder="输入角色名" autocomplete="off">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="slug" class="col-sm-2 control-label">Slug</label>
+                            <label for="slug" class="col-sm-2 control-label">角色名</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" name="slug" id="slug" placeholder="Enter slug" autocomplete="off">
+                                <input type="text" class="form-control" name="slug" id="slug" placeholder="输入角色标识符" autocomplete="off">
                             </div>
                         </div>
                         @foreach($permissions->groupBy('prefix') as $prefix => $permissionGroup)
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">
                                     @if($loop->first)
-                                        Permissions
+                                        权限
                                     @endif
                                 </label>
                                 <div class="col-sm-10">
@@ -61,8 +61,8 @@
                     <!-- /.box-body -->
 
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <a class="btn btn-default" href="{{ URL::previous() }}">Back</a>
+                        <button type="submit" class="btn btn-primary">保存</button>
+                        <a class="btn btn-default" href="{{ URL::previous() }}">返回</a>
                     </div>
                 </div>
                 <!-- /.box -->

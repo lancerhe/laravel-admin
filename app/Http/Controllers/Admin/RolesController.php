@@ -15,7 +15,7 @@ class RolesController extends Controller {
     }
 
     public function index() {
-        $roles = Role::query()->paginate(15);
+        $roles = Role::query()->paginate(30);
         return view('admin.roles.index', compact('roles'));
     }
 
@@ -40,7 +40,7 @@ class RolesController extends Controller {
             $role->attachPermissions($permissionIds);
         });
 
-        session()->flash('success', 'Role create success.');
+        session()->flash('success', "角色[{$role->slug}]添加成功");
         return redirect()->route('admin.roles.show', [$role]);
     }
 
@@ -75,7 +75,7 @@ class RolesController extends Controller {
             $role->attachPermissions($permissionIds);
         });
 
-        session()->flash('success', 'Role update success.');
+        session()->flash('success', "角色[{$role->slug}]更新成功");
         return redirect()->route('admin.roles.show', [$role]);
     }
 }

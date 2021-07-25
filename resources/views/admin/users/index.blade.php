@@ -1,4 +1,4 @@
-@php ($functionTitle = 'Users')
+@php ($functionTitle = '用户列表')
 
 @extends('layouts.page')
 
@@ -23,11 +23,11 @@
                         <tbody>
                         <tr>
                             <th width="5%">ID</th>
-                            <th width="25%">Name</th>
-                            <th width="30%">E-Mail</th>
+                            <th width="25%">昵称</th>
+                            <th width="30%">用户名</th>
                             <th width="15%">Created At</th>
                             <th width="15%">Updated At</th>
-                            <th width="10%">Operation</th>
+                            <th width="10%">操作</th>
                         </tr>
                         @foreach ($users as $user)
                             <tr>
@@ -37,8 +37,8 @@
                                 <td>{{ $user->created_at->format('Y-m-d H:i:s') }}</td>
                                 <td>{{ $user->updated_at->format('Y-m-d H:i:s') }}</td>
                                 <td>
-                                    <a class="btn bg-navy btn-xs" href="{{ route('admin.users.edit', $user->id )}}">Edit</a>
-                                    <a class="btn bg-olive btn-xs" href="{{ route('admin.users.show', $user->id )}}">View</a>
+                                    <a class="btn bg-navy btn-xs" href="{{ route('admin.users.edit', $user->id )}}">编辑</a>
+                                    <a class="btn bg-olive btn-xs" href="{{ route('admin.users.show', $user->id )}}">详情</a>
                                 </td>
                             </tr>
                         @endforeach

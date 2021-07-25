@@ -16,7 +16,7 @@ class UsersController extends Controller {
     }
 
     public function index() {
-        $users = User::query()->paginate(15);
+        $users = User::query()->paginate(30);
         return view('admin.users.index', compact('users'));
     }
 
@@ -57,7 +57,7 @@ class UsersController extends Controller {
             $user->attachPermissions($permissionIds);
         });
 
-        session()->flash('success', 'User update success.');
+        session()->flash('success', "用户[{$user->name}]更新成功");
         return redirect()->route('admin.users.show', [$user]);
     }
 }

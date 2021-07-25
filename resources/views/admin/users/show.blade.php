@@ -1,4 +1,4 @@
-@php ($functionTitle = 'User Information')
+@php ($functionTitle = '用户详情')
 
 @extends('layouts.page')
 
@@ -22,19 +22,19 @@
                 <!-- /.box-header -->
                 <div class="box-body form-horizontal">
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Name</label>
+                        <label for="name" class="col-sm-2 control-label">昵称</label>
                         <div class="col-sm-6">
                             <p class="text-input">{{ $user->name }}</p>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="email" class="col-sm-2 control-label">E-Mail</label>
+                        <label for="email" class="col-sm-2 control-label">用户名</label>
                         <div class="col-sm-6">
                             <p class="text-input">{{ $user->email }}</p>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="slug" class="col-sm-2 control-label">Roles</label>
+                        <label for="slug" class="col-sm-2 control-label">角色</label>
                         <div class="col-sm-10">
                             @foreach($user->roles as $role)
                                 <div class="checkbox checkbox-inline" style="padding-left: 0">
@@ -47,7 +47,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">
                                 @if($loop->first)
-                                    Permissions
+                                    权限
                                 @endif
                             </label>
                             <div class="col-sm-10">
@@ -65,7 +65,7 @@
                                                 <div class="checkbox checkbox-inline">
                                                     <label>{{ $permission->slug }}</label>
                                                 </div>
-                                                @php ($functionTitle = 'Permission Create')
+                                                @php ($functionTitle = '添加新权限')
 
                                             @endif
                                         @endforeach
@@ -78,8 +78,8 @@
                 <!-- /.box-body -->
 
                 <div class="box-footer">
-                    <a type="button" class="btn btn-primary" href="{{ route('admin.users.edit', $user->id) }}">Edit</a>
-                    <a type="button" class="btn btn-default" href="{{ route('admin.users.index') }}">Back to List</a>
+                    <a type="button" class="btn btn-primary" href="{{ route('admin.users.edit', $user->id) }}">编辑</a>
+                    <a type="button" class="btn btn-default" href="{{ route('admin.users.index') }}">返回列表</a>
                 </div>
             </div>
             <!-- /.box -->

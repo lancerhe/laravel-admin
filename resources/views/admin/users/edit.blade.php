@@ -1,4 +1,4 @@
-@php ($functionTitle = 'User Edit')
+@php ($functionTitle = '编辑用户')
 
 @extends('layouts.page')
 
@@ -25,32 +25,32 @@
                     {{ csrf_field() }}
                     <div class="box-body">
                         <div class="form-group">
-                            <label for="name" class="col-sm-2 control-label">Name</label>
+                            <label for="name" class="col-sm-2 control-label">昵称</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" name="name" id="name" value="{{ $user->name }}" placeholder="Enter name" autocomplete="off">
+                                <input type="text" class="form-control" name="name" id="name" value="{{ $user->name }}" placeholder="输入昵称" autocomplete="off">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="email" class="col-sm-2 control-label">E-Mail</label>
+                            <label for="email" class="col-sm-2 control-label">用户名</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" name="email" id="email" value="{{ $user->email }}" placeholder="Enter email" autocomplete="off">
+                                <input type="text" class="form-control" name="email" id="email" value="{{ $user->email }}" placeholder="输入邮箱用户名" autocomplete="off">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="password" class="col-sm-2 control-label">Password</label>
+                            <label for="password" class="col-sm-2 control-label">密码</label>
                             <div class="col-sm-6">
                                 <input type="password" name="password" id="password" class="form-control" value="{{ old('password') }}">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="password_confirmation" class="col-sm-2 control-label">Confirm Password</label>
+                            <label for="password_confirmation" class="col-sm-2 control-label">确认密码</label>
                             <div class="col-sm-6">
                                 <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" value="{{ old('password_confirmation') }}">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="slug" class="col-sm-2 control-label">Roles</label>
+                            <label for="slug" class="col-sm-2 control-label">角色</label>
                             <div class="col-sm-10">
                                 @foreach($roles as $role)
                                     <div class="checkbox checkbox-inline" style="padding-left: 0">
@@ -66,7 +66,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">
                                     @if($loop->first)
-                                        Permissions
+                                        权限
                                     @endif
                                 </label>
                                 <div class="col-sm-10">
@@ -88,8 +88,8 @@
                     <!-- /.box-body -->
 
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <a class="btn btn-default" href="{{ URL::previous() }}">Back</a>
+                        <button type="submit" class="btn btn-primary">保存</button>
+                        <a class="btn btn-default" href="{{ URL::previous() }}">返回</a>
                     </div>
                 </div>
                 <!-- /.box -->

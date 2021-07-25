@@ -48,20 +48,20 @@ class AppServiceProvider extends ServiceProvider {
             /** @var User $user */
             $user = Auth::user();
 
-            $event->menu->add(['text' => 'Home', 'icon' => 'fa fa-fw fa-home', 'url' => route("home")]);
+            $event->menu->add(['text' => '控制台', 'icon' => 'fa fa-fw fa-home', 'url' => route("home")]);
             if ($user->hasPermissions(["user-view", "role-view", "permission-view"])) {
-                $event->menu->add('ADMIN SYSTEM');
+                $event->menu->add('系统管理');
                 $submenu = [];
                 if ($user->hasPermissions("user-view")) {
-                    $submenu[] = ['text' => 'Users', 'icon' => 'fa fa-fw fa-users', 'url' => route("admin.users.index")];
+                    $submenu[] = ['text' => '用户管理', 'icon' => 'fa fa-fw fa-users', 'url' => route("admin.users.index")];
                 }
                 if ($user->hasPermissions("role-view")) {
-                    $submenu[] = ['text' => 'Roles', 'icon' => 'fa fa-fw fa-user', 'url' => route("admin.roles.index")];
+                    $submenu[] = ['text' => '角色管理', 'icon' => 'fa fa-fw fa-user', 'url' => route("admin.roles.index")];
                 }
                 if ($user->hasPermissions("permission-view")) {
-                    $submenu[] = ['text' => 'Permissions', 'icon' => 'fa fa-fw fa-user-secret', 'url' => route("admin.permissions.index")];
+                    $submenu[] = ['text' => '权限管理', 'icon' => 'fa fa-fw fa-user-secret', 'url' => route("admin.permissions.index")];
                 }
-                $event->menu->add(['text' => 'Users & Permissions', 'icon' => 'fa fa-fw fa-street-view', 'class' => 'treeview', 'submenu_class' => 'treeview-menu', 'submenu' => $submenu]);
+                $event->menu->add(['text' => '用户 & 权限', 'icon' => 'fa fa-fw fa-street-view', 'class' => 'treeview', 'submenu_class' => 'treeview-menu', 'submenu' => $submenu]);
             }
         });
     }

@@ -1,4 +1,4 @@
-@php ($functionTitle = 'Role Information')
+@php ($functionTitle = '角色详情')
 
 @extends('layouts.page')
 
@@ -22,13 +22,13 @@
                 <!-- /.box-header -->
                 <div class="box-body form-horizontal">
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Name</label>
+                        <label for="name" class="col-sm-2 control-label">角色标识符</label>
                         <div class="col-sm-6">
                             <p class="text-input">{{ $role->name }}</p>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="email" class="col-sm-2 control-label">Slug</label>
+                        <label for="email" class="col-sm-2 control-label">角色名</label>
                         <div class="col-sm-6">
                             <p class="text-input">{{ $role->slug }}</p>
                         </div>
@@ -37,7 +37,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">
                                 @if($loop->first)
-                                    Permissions
+                                    权限
                                 @endif
                             </label>
                             <div class="col-sm-10">
@@ -58,8 +58,8 @@
                 <!-- /.box-body -->
 
                 <div class="box-footer">
-                    <a type="button" class="btn btn-primary" href="{{ route('admin.roles.edit', $role->id) }}">Edit</a>
-                    <a type="button" class="btn btn-default" href="{{ route('admin.roles.index') }}">Back to List</a>
+                    <a type="button" class="btn btn-primary" href="{{ route('admin.roles.edit', $role->id) }}">编辑</a>
+                    <a type="button" class="btn btn-default" href="{{ route('admin.roles.index') }}">返回列表</a>
                 </div>
             </div>
             <!-- /.box -->

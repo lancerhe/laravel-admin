@@ -13,7 +13,7 @@ class PermissionsController extends Controller {
     }
 
     public function index() {
-        $permissions = Permission::query()->paginate(15);
+        $permissions = Permission::query()->paginate(30);
         return view('admin.permissions.index', compact('permissions'));
     }
 
@@ -34,7 +34,7 @@ class PermissionsController extends Controller {
         $permission->prefix = $request->post('prefix');
         $permission->save();
 
-        session()->flash('success', 'Permission create success.');
+        session()->flash('success', "权限[{$permission->slug}]添加成功");
         return redirect()->route('admin.permissions.show', [$permission]);
     }
 
@@ -62,7 +62,7 @@ class PermissionsController extends Controller {
         $permission->prefix = $request->post('prefix');
         $permission->save();
 
-        session()->flash('success', 'Permission update success.');
+        session()->flash('success', "权限[{$permission->slug}]更新成功");
         return redirect()->route('admin.permissions.show', [$permission]);
     }
 }

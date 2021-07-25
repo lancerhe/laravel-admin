@@ -1,4 +1,4 @@
-@php ($functionTitle = 'Roles')
+@php ($functionTitle = '角色列表')
 
 @extends('layouts.page')
 
@@ -20,7 +20,7 @@
                         <form>
                             <div class="input-group input-group-sm" style="width: 50px;">
                                 <div class="input-group-btn">
-                                    <a class="btn bg-purple btn-xs" href="{{ route('admin.roles.create')}}">Create</a>
+                                    <a class="btn bg-purple btn-xs" href="{{ route('admin.roles.create')}}">添加新角色</a>
                                 </div>
                             </div>
                         </form>
@@ -32,8 +32,8 @@
                         <tbody>
                         <tr>
                             <th width="5%">ID</th>
-                            <th>Name</th>
-                            <th>Slug</th>
+                            <th>角色标识符</th>
+                            <th>角色名</th>
                             <th width="15%">Created At</th>
                             <th width="15%">Updated At</th>
                             <th width="10%">Operation</th>
@@ -46,8 +46,8 @@
                                 <td>{{ $role->created_at->format('Y-m-d H:i:s') }}</td>
                                 <td>{{ $role->updated_at->format('Y-m-d H:i:s') }}</td>
                                 <td>
-                                    <a class="btn bg-olive btn-xs" href="{{ route('admin.roles.show', $role->id )}}">View</a>
-                                    <a class="btn bg-navy btn-xs" href="{{ route('admin.roles.edit', $role->id )}}">Edit</a>
+                                    <a class="btn bg-olive btn-xs" href="{{ route('admin.roles.show', $role->id )}}">详情</a>
+                                    <a class="btn bg-navy btn-xs" href="{{ route('admin.roles.edit', $role->id )}}">编辑</a>
                                 </td>
                             </tr>
                         @endforeach

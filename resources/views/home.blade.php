@@ -3,9 +3,9 @@
 @section('title', 'AdminLTE')
 
 @section('content_header')
-    <h1>Dashboard</h1>
+    <h1>控制台</h1>
 @stop
 
 @section('content')
-    <p>You are logged in!</p>
+    <p>您已成功登录！</p>
 @stop

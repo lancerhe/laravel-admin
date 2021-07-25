@@ -1,4 +1,4 @@
-@php ($functionTitle = 'Edit Permission')
+@php ($functionTitle = '编辑权限')
 
 @extends('layouts.page')
 
@@ -25,29 +25,29 @@
                     {{ csrf_field() }}
                     <div class="box-body">
                         <div class="form-group">
-                            <label for="prefix" class="col-sm-2 control-label">Prefix</label>
+                            <label for="prefix" class="col-sm-2 control-label">分组</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" name="prefix" id="prefix" value="{{ $permission->prefix }}" placeholder="Enter prefix" autocomplete="off">
+                                <input type="text" class="form-control" name="prefix" id="prefix" value="{{ $permission->prefix }}" placeholder="输入分组" autocomplete="off">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="name" class="col-sm-2 control-label">Name</label>
+                            <label for="name" class="col-sm-2 control-label">权限标识符</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" name="name" id="name" value="{{ $permission->name }}" placeholder="Enter name" autocomplete="off">
+                                <input type="text" class="form-control" name="name" id="name" value="{{ $permission->name }}" placeholder="输入权限标识符" autocomplete="off">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="slug" class="col-sm-2 control-label">Slug</label>
+                            <label for="slug" class="col-sm-2 control-label">权限名</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" name="slug" id="slug" value="{{ $permission->slug }}" placeholder="Enter slug" autocomplete="off">
+                                <input type="text" class="form-control" name="slug" id="slug" value="{{ $permission->slug }}" placeholder="输入权限名" autocomplete="off">
                             </div>
                         </div>
                     </div>
                     <!-- /.box-body -->
 
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <a class="btn btn-default" href="{{ URL::previous() }}">Back</a>
+                        <button type="submit" class="btn btn-primary">保存</button>
+                        <a class="btn btn-default" href="{{ URL::previous() }}">返回</a>
                     </div>
                 </div>
                 <!-- /.box -->

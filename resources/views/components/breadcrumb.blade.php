@@ -11,7 +11,7 @@
     <small>{{ $secondary['text'] }}</small>
 </h1>
 <ol class="breadcrumb">
-    <li><a href="{{ route("home") }}"><i class="fa fa-home"></i> Home</a></li>
+    <li><a href="{{ route("home") }}"><i class="fa fa-home"></i> 控制台</a></li>
     @if($slot->toHtml() && $slot->toHtml() != $secondary['text'])
         <li><a href="{{ $secondary['href'] }}">{{ $secondary['text'] }}</a></li>
         <li class="active">{{ $slot }}</li>

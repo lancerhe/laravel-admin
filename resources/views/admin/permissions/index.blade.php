@@ -1,4 +1,4 @@
-@php ($functionTitle = 'Permissions')
+@php ($functionTitle = '权限列表')
 
 @extends('layouts.page')
 
@@ -21,7 +21,7 @@
                         <form>
                             <div class="input-group input-group-sm" style="width: 50px;">
                                 <div class="input-group-btn">
-                                    <a class="btn bg-purple btn-xs" href="{{ route('admin.permissions.create')}}">Create</a>
+                                    <a class="btn bg-purple btn-xs" href="{{ route('admin.permissions.create')}}">添加新权限</a>
                                 </div>
                             </div>
                         </form>
@@ -33,12 +33,12 @@
                         <tbody>
                         <tr>
                             <th width="5%">ID</th>
-                            <th>Prefix</th>
-                            <th>Name</th>
-                            <th>Slug</th>
+                            <th>分组</th>
+                            <th>权限标识符</th>
+                            <th>权限名</th>
                             <th width="15%">Created At</th>
                             <th width="15%">Updated At</th>
-                            <th width="10%">Operation</th>
+                            <th width="10%">操作</th>
                         </tr>
                         @foreach ($permissions as $permission)
                             <tr>
@@ -49,8 +49,8 @@
                                 <td>{{ $permission->created_at->format('Y-m-d H:i:s') }}</td>
                                 <td>{{ $permission->updated_at->format('Y-m-d H:i:s') }}</td>
                                 <td>
-                                    <a class="btn bg-navy btn-xs" href="{{ route('admin.permissions.edit', $permission->id )}}">Edit</a>
-                                    <a class="btn bg-olive btn-xs" href="{{ route('admin.permissions.show', $permission->id )}}">View</a>
+                                    <a class="btn bg-navy btn-xs" href="{{ route('admin.permissions.edit', $permission->id )}}">编辑</a>
+                                    <a class="btn bg-olive btn-xs" href="{{ route('admin.permissions.show', $permission->id )}}">详情</a>
                                 </td>
                             </tr>
                         @endforeach
