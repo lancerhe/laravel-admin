@@ -24,6 +24,8 @@ Route::patch('/profile', 'ProfileController@update')->name('profile.update');
 
 // users
 Route::get('/admin/users', 'Admin\UsersController@index')->middleware('permission:user-view')->name('admin.users.index');
+Route::post('/admin/users', 'Admin\UsersController@store')->middleware('permission:user-update')->name('admin.users.store');
+Route::get('/admin/users/create', 'Admin\UsersController@create')->middleware('permission:user-update')->name('admin.users.create');
 Route::get('/admin/users/{user}', 'Admin\UsersController@show')->middleware('permission:user-view')->name('admin.users.show');
 Route::get('/admin/users/{user}/edit', 'Admin\UsersController@edit')->middleware('permission:user-update')->name('admin.users.edit');
 Route::patch('/admin/users/{user}', 'Admin\UsersController@update')->middleware('permission:user-update')->name('admin.users.update');

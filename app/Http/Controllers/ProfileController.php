@@ -34,7 +34,7 @@ class ProfileController extends Controller {
         /** @var User $user */
         $user = User::findOrFail(Auth::id());
         $this->validate($request, [
-            'email'    => 'required|max:250',
+            'email'    => 'required|max:250|unique:users,email,' . $user->id,
             'password' => 'nullable|confirmed|min:6',
         ]);
 

@@ -1,4 +1,4 @@
-@php ($functionTitle = '编辑用户')
+@php ($functionTitle = '添加新用户')
 
 @extends('layouts.page')
 
@@ -14,26 +14,25 @@
     @include('shared.errors')
     <div class="row">
         <div class="col-xs-12">
-            <form method="post" action="{{ route('admin.users.update', $user->id) }}" class="form-horizontal">
+            <form method="post" action="{{ route('admin.users.store') }}" class="form-horizontal">
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title">{{ $functionTitle }}</h3>
                     </div>
 
                     <!-- /.box-header -->
-                    {{ method_field('PATCH') }}
                     {{ csrf_field() }}
                     <div class="box-body">
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label">昵称</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" name="name" id="name" value="{{ old('name', $user->name) }}" placeholder="输入昵称" autocomplete="off">
+                                <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" placeholder="输入昵称" autocomplete="off">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="email" class="col-sm-2 control-label">用户名</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" name="email" id="email" value="{{ old('email', $user->email) }}" placeholder="输入邮箱用户名" autocomplete="off">
+                                <input type="text" class="form-control" name="email" id="email" value="{{ old("email") }}" placeholder="输入邮箱用户名" autocomplete="off">
                             </div>
                         </div>
                         <div class="form-group">
@@ -55,7 +54,7 @@
                                 @foreach($roles as $role)
                                     <div class="checkbox checkbox-inline" style="padding-left: 0">
                                         <label>
-                                            <input type="checkbox" name="role_ids[]" value="{{ $role->id }}" {{ $user->roles->contains($role) ? 'checked' : '' }} >
+                                            <input type="checkbox" name="role_ids[]" value="{{ $role->id }}" disabled>
                                             {{ $role->slug }}
                                         </label>
                                     </div>
@@ -76,7 +75,7 @@
                                     @foreach($permissionGroup as $permission)
                                         <div class="checkbox checkbox-inline">
                                             <label>
-                                                <input type="checkbox" name="permission_ids[]" value="{{ $permission->id }}" {{ $user->permissions->contains($permission) ? 'checked' : '' }}>
+                                                <input type="checkbox" name="permission_ids[]" value="{{ $permission->id }}" @if (in_array($prefix, ["用户管理","权限管理","角色管理"])) disabled @endif>
                                                 {{ $permission->slug }}
                                             </label>
                                         </div>

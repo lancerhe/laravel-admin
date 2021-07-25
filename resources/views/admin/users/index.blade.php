@@ -16,6 +16,15 @@
             <div class="box box-primary">
                 <div class="box-header">
                     <h3 class="box-title">{{ $functionTitle }}</h3>
+                    <div class="box-tools">
+                        <form>
+                            <div class="input-group input-group-sm" style="width: 50px;">
+                                <div class="input-group-btn">
+                                    <a class="btn bg-purple btn-xs" href="{{ route('admin.users.create')}}">添加新用户</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body table-responsive no-padding">
