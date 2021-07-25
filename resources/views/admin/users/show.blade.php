@@ -17,6 +17,18 @@
             <div class="box box-primary">
                 <div class="box-header with-border">
                     <h3 class="box-title">{{ $functionTitle }}</h3>
+                    <div class="box-tools">
+                        <form>
+                            <div class="input-group input-group-sm" style="width: 50px;">
+                                <div class="input-group-btn">
+                                    @if (Auth::user()->isAdmin() && Auth::user()->id != $user->id )
+                                        <a class="btn bg-purple btn-xs"
+                                           href="{{ route('admin.users.impersonate', $user->id)}}">身份模拟</a>
+                                    @endif
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
 
                 <!-- /.box-header -->

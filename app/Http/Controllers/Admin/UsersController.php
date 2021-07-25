@@ -7,6 +7,7 @@ use App\Models\Admin\Permission;
 use App\Models\Admin\Role;
 use App\Models\Admin\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller {
@@ -21,6 +22,7 @@ class UsersController extends Controller {
     }
 
     public function show($id) {
+        /** @var User $user */
         $user = User::findOrFail($id);
         $permissions = Permission::all();
         return view('admin.users.show', compact('user', 'permissions'));
@@ -33,10 +35,18 @@ class UsersController extends Controller {
     }
 
     public function edit($id) {
+        /** @var User $user */
         $user = User::findOrFail($id);
         $roles = Role::all();
         $permissions = Permission::all();
         return view('admin.users.edit', compact('user', 'roles', 'permissions'));
+    }
+
+    public function impersonate($id) {
+        /** @var User $user */
+        $user = User::findOrFail($id);
+        Auth::user()->impersonate($user);
+        return redirect()->route('home');
     }
 
     public function store(Request $request) {

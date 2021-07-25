@@ -18,28 +18,32 @@ class ProfileController extends Controller {
     }
 
     public function index() {
-        $user        = User::findOrFail(Auth::id());
+        $user = Auth::user();
         $permissions = Permission::all();
         return view('profile.index', compact('user', 'permissions'));
     }
 
     public function edit() {
         /** @var User $user */
-        $user = User::findOrFail(Auth::id());
+        $user = Auth::user();
         return view('profile.edit', compact('user'));
     }
 
+    public function leaveImpersonate() {
+        Auth::user()->leaveImpersonation();
+        return redirect()->route('home');
+    }
 
     public function update(Request $request) {
         /** @var User $user */
         $user = User::findOrFail(Auth::id());
         $this->validate($request, [
-            'email'    => 'required|max:250|unique:users,email,' . $user->id,
+            'email' => 'required|max:250|unique:users,email,' . $user->id,
             'password' => 'nullable|confirmed|min:6',
         ]);
 
         $user->email = $request->post('email');
-        if ( $request->post('password') ) {
+        if ($request->post('password')) {
             $user->password = bcrypt($request->post('password'));
         }
         $user->save();

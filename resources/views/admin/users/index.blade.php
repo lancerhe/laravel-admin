@@ -32,11 +32,11 @@
                         <tbody>
                         <tr>
                             <th width="5%">ID</th>
-                            <th width="25%">昵称</th>
-                            <th width="30%">用户名</th>
+                            <th width="20%">昵称</th>
+                            <th width="25%">用户名</th>
                             <th width="15%">Created At</th>
                             <th width="15%">Updated At</th>
-                            <th width="10%">操作</th>
+                            <th width="20%">操作</th>
                         </tr>
                         @foreach ($users as $user)
                             <tr>
@@ -46,8 +46,14 @@
                                 <td>{{ $user->created_at->format('Y-m-d H:i:s') }}</td>
                                 <td>{{ $user->updated_at->format('Y-m-d H:i:s') }}</td>
                                 <td>
-                                    <a class="btn bg-navy btn-xs" href="{{ route('admin.users.edit', $user->id )}}">编辑</a>
-                                    <a class="btn bg-olive btn-xs" href="{{ route('admin.users.show', $user->id )}}">详情</a>
+                                    <a class="btn bg-navy btn-xs"
+                                       href="{{ route('admin.users.edit', $user->id )}}">编辑</a>
+                                    <a class="btn bg-olive btn-xs"
+                                       href="{{ route('admin.users.show', $user->id )}}">详情</a>
+                                    @if (Auth::user()->isAdmin() && Auth::user()->id != $user->id )
+                                        <a class="btn bg-purple btn-xs"
+                                           href="{{ route('admin.users.impersonate', $user->id)}}">身份模拟</a>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

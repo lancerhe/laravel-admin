@@ -175,6 +175,11 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
 
         /**
+         * Vendor Impersonate Provider
+         */
+        Lab404\Impersonate\ImpersonateServiceProvider::class,
+
+        /**
          * Vendor RBAC
          * php artisan vendor:publish
          * php artisan migrate

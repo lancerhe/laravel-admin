@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile', 'ProfileController@index')->name('profile.index');
 Route::get('/profile/edit', 'ProfileController@edit')->name('profile.edit');
 Route::patch('/profile', 'ProfileController@update')->name('profile.update');
+Route::get('/profile/leave-impersonate', 'ProfileController@leaveImpersonate')->name('profile.leave-impersonate');
 
 // users
 Route::get('/admin/users', 'Admin\UsersController@index')->middleware('permission:user-view')->name('admin.users.index');
@@ -29,6 +30,7 @@ Route::get('/admin/users/create', 'Admin\UsersController@create')->middleware('p
 Route::get('/admin/users/{user}', 'Admin\UsersController@show')->middleware('permission:user-view')->name('admin.users.show');
 Route::get('/admin/users/{user}/edit', 'Admin\UsersController@edit')->middleware('permission:user-update')->name('admin.users.edit');
 Route::patch('/admin/users/{user}', 'Admin\UsersController@update')->middleware('permission:user-update')->name('admin.users.update');
+Route::get('/admin/users/{user}/impersonate', 'Admin\UsersController@impersonate')->middleware('permission:user-update')->name('admin.users.impersonate');
 
 // roles
 Route::get('/admin/roles', 'Admin\RolesController@index')->middleware('permission:role-view')->name('admin.roles.index');

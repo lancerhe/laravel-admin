@@ -3,6 +3,7 @@
 namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Lab404\Impersonate\Models\Impersonate;
 use LancerHe\RBAC\Traits\RBACUser;
 use Illuminate\Notifications\Notifiable;
 
@@ -14,6 +15,8 @@ use Illuminate\Notifications\Notifiable;
 class User extends \Illuminate\Foundation\Auth\User {
 
     use Notifiable;
+
+    use Impersonate;
 
     use RBACUser {
         roles as protected traitRoles;
@@ -86,7 +89,14 @@ class User extends \Illuminate\Foundation\Auth\User {
     ];
 
     public function isAdmin(): bool {
-        return $this->attributes["user_id"] == 1;
+        return $this->attributes["id"] == 1;
+    }
+
+    /**
+     * @return bool
+     */
+    public function canImpersonate(): bool {
+        return $this->isAdmin();
     }
 
     public function gravatar($size = '100') {

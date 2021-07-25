@@ -108,6 +108,14 @@
                                                 </li>
                                             </ul>
                                         </li>
+                                        @if (Auth::user()->isImpersonated() )
+                                            <li class="user user-menu" style="background-color: darkred">
+                                                <a href="{{ route('profile.leave-impersonate') }}">
+                                                    <i class="fa fa-user-secret"></i>
+                                                    <span class="hidden-xs">退出身份</span>
+                                                </a>
+                                            </li>
+                                        @endif
                                     </ul>
 
                                     <ul class="nav navbar-nav">
