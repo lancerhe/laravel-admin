@@ -12,6 +12,9 @@ return [
     | You can optionally also specify a title prefix and/or postfix.
     |
     */
+    'password_reset_open' => false,
+
+    'register_open' => false,
 
     'title' => 'AdminLTE 2',
 
