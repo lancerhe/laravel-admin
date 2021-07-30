@@ -23,7 +23,8 @@
         "barryvdh/laravel-debugbar": "3.4.2",
         "lancerhe/laravel-rbac": "1.0.1",
         "lab404/laravel-impersonate": "1.2.0",
-        "predis/predis": "v1.1.7"
+        "predis/predis": "v1.1.7",
+        "psr/container": "1.0.0"
     },
     "require-dev": {
         "filp/whoops": "^2.0",
