@@ -193,6 +193,55 @@
 
 @section('adminlte_js')
     <script src="{{ asset('vendor/adminlte/dist/js/adminlte.min.js') }}"></script>
+
+    <script>
+        bootbox.setDefaults("locale", "zh_CN");
+        $(document).ajaxStart(function () {
+            Pace.restart()
+        });
+        $.ajaxSetup({
+            headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')}
+        });
+        $(function () {
+            new ClipboardJS('[data-toggle="clipboard"]');
+
+            $('[data-toggle="tooltip"]').tooltip();
+
+            $("[data-toggle='modal']").click(function (e) {
+                /* Prevent Default*/
+                e.preventDefault();
+
+                /* Parameters */
+                var url = $(this).attr('href');
+                var container = $(this).attr('data-container');
+                $(container).modal();
+                $(container).find('.modal-title').html("Loading...");
+                $(container).find('.modal-body').html('<div class="progress progress-sm active"><div class="progress-bar progress-bar-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 99%"></div> </div>');
+
+                /* XHR */
+                $.get(url).done(function (response) {
+                    $(container).find('.modal-title').html(response.title);
+                    $(container).find('.modal-body').html(response.body);
+                });
+            });
+
+            $("[data-toggle='timepicker']").timepicker({
+                showInputs: false,
+                showSeconds: false,
+                showMeridian: false,
+                minuteStep: 5,
+            });
+
+            $("[data-toggle='datepicker']").datepicker({
+                language: "zh-CN",
+                autoclose: true,//选中之后自动隐藏日期选择框
+                clearBtn: true,//清除按钮
+                todayBtn: true,//今日按钮
+                format: "yyyy-mm-dd"//日期格式，详见 http://bootstrap-datepicker.readthedocs.org/en/release/options.html#format
+            })
+        });
+
+    </script>
     @stack('js')
     @yield('js')
 @stop

@@ -20,6 +20,12 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/AdminLTE.min.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('vendor/timepicker/dist/css/bootstrap-timepicker-0.5.2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/pace/dist/css/pace-theme-flash-1.0.2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/bootstrap-daterangepicker/dist/css/daterangepicker-2.1.27.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('vendor/googleapis/css/style.css') }}">
+
     @yield('adminlte_css')
 
     <!--[if lt IE 9]>
@@ -37,6 +43,12 @@
 <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.min.js') }}"></script>
 <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.slimscroll.min.js') }}"></script>
 <script src="{{ asset('vendor/adminlte/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+
+<script src="{{ asset('vendor/pace/dist/js/pace-1.0.2.min.js') }}"></script>
+<script src="{{ asset('vendor/clipboard/dist/js/clipboard-2.0.0.min.js') }}"></script>
+<script src="{{ asset('vendor/bootbox/dist/js/bootbox-1.0.2.min.js') }}"></script>
+<script src="{{ asset('vendor/timepicker/dist/js/bootstrap-timepicker-0.5.2.min.js') }}"></script>
+<script src="{{ asset('vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
 
 @include('layouts.plugins', ['type' => 'js'])
 
