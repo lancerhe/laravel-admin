@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Admin\User;
+use Carbon\Carbon;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\Facades\Auth;
@@ -19,6 +20,7 @@ class AppServiceProvider extends ServiceProvider {
      * @return void
      */
     public function boot(Factory $view, Dispatcher $events) {
+        Carbon::setLocale('zh');
         $this->addMenuListener($events);
         $this->registerViewComposers($view);
     }
