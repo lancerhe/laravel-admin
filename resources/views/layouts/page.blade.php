@@ -8,6 +8,27 @@
         .text-input {
             padding-top: 7px;
         }
+
+        .bg-filtered {
+            background-color: #FFCC99;
+            color: black;
+            font-weight: 600;
+        }
+
+        .th-sortable {
+            cursor: pointer;
+        }
+
+        .line-2-break {
+            text-overflow: -o-ellipsis-lastline;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            line-height: 16px;
+        }
     </style>
     @yield('css')
 @stop
@@ -189,6 +210,22 @@
 
     </div>
     <!-- ./wrapper -->
+
+    <!-- modal -->
+    <div class="modal fade" id="modal-default">
+        <div class="modal-dialog" style="width: 900px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ./modal -->
 @stop
 
 @section('adminlte_js')
