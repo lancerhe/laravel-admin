@@ -31,6 +31,12 @@
         }
 
         /** Select2 style to AdminLTE */
+        .bg-filtered + .select2-container--default .select2-selection--single {
+            background-color: #FFCC99;
+            color: black;
+            font-weight: 600;
+        }
+
         .select2-container--default .select2-selection--single {
             height: 30px;
             padding: 5px 10px;
