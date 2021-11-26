@@ -29,6 +29,25 @@
             -webkit-box-orient: vertical;
             line-height: 16px;
         }
+
+        /** Select2 style to AdminLTE */
+        .select2-container--default .select2-selection--single {
+            height: 30px;
+            padding: 5px 10px;
+            font-size: 12px;
+        }
+
+        .select2-container--default .select2-results__option[aria-selected=true] {
+            background-color: #AAA;
+        }
+
+        .select2-results__option--highlighted .select2-result-store__title {
+            color: white
+        }
+
+        .select2-results__option--highlighted .select2-result-store__box, .select2-results__option--highlighted .select2-result-store__box, .select2-results__option--highlighted .select2-result-store__description, .select2-results__option--highlighted .select2-result-store__watchers {
+            color: #c6dcef
+        }
     </style>
     @yield('css')
 @stop
