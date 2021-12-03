@@ -37,10 +37,20 @@
             font-weight: 600;
         }
 
-        .select2-container--default .select2-selection--single {
+        .input-group-sm .select2-container--default .select2-selection--single {
             height: 30px;
-            padding: 5px 10px;
+            padding: 5px 14px;
             font-size: 12px;
+        }
+
+        .select2-container--default .select2-selection--single {
+            height: 34px;
+            padding: 6px 16px;
+            font-size: 14px;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            color: #555;
         }
 
         .select2-container--default .select2-results__option[aria-selected=true] {
@@ -300,7 +310,21 @@
                 clearBtn: true,//清除按钮
                 todayBtn: true,//今日按钮
                 format: "yyyy-mm-dd"//日期格式，详见 http://bootstrap-datepicker.readthedocs.org/en/release/options.html#format
-            })
+            });
+
+            $("form[data-confirm]").submit(function (e) {
+                var currentForm = this;
+                var message = $(this).attr('data-confirm');
+                if (!message) {
+                    message = "确定要执行该操作吗？"
+                }
+                e.preventDefault();
+                bootbox.confirm(message, function (result) {
+                    if (result) {
+                        currentForm.submit();
+                    }
+                });
+            });
         });
 
     </script>
