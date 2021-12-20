@@ -5,6 +5,14 @@
           href="{{ asset('vendor/adminlte/dist/css/skins/skin-' . config('adminlte.skin', 'blue') . '.min.css')}} ">
     @stack('css')
     <style type="text/css">
+        .fa-sort-asc:before {
+            content: "\f0de";
+        }
+
+        .fa-sort-desc:before {
+            content: "\f0dd";
+        }
+
         .text-input {
             padding-top: 7px;
         }
@@ -13,6 +21,20 @@
             background-color: #FFCC99;
             color: black;
             font-weight: 600;
+        }
+
+        .bg-internal {
+            background-color: #FAF0E6;
+            color: #dd4b39;
+        }
+
+        .bg-internal .table {
+            background-color: #FAF0E6;
+            color: #dd4b39;
+        }
+
+        .bg-internal a {
+            color: #dd4b39;
         }
 
         .th-sortable {
@@ -324,6 +346,23 @@
                         currentForm.submit();
                     }
                 });
+            });
+
+            $("#check-all").click(function () {
+                $("input[name='ids[]']").prop('checked', $(this).prop('checked')).trigger('change');
+            });
+
+            $("tr:has(input[name='ids[]'])").on('click', function (e) {
+                if (e.target.nodeName === "TD")
+                    $(this).find("input[name='ids[]']").trigger('click');
+            });
+
+            $("input[name='ids[]']").on('change', function () {
+                if ($(this).prop('checked')) {
+                    $(this).parentsUntil('tbody').addClass('bg-internal')
+                } else {
+                    $(this).parentsUntil('tbody').removeClass('bg-internal')
+                }
             });
         });
 
