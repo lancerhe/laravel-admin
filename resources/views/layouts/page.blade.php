@@ -366,6 +366,13 @@
             });
         });
 
+        function getCheckIds() {
+            var ids = [];
+            $("input[name='ids[]']:checked").each(function () {
+                ids.push($(this).val());
+            });
+            return ids;
+        }
     </script>
     @stack('js')
     @yield('js')
