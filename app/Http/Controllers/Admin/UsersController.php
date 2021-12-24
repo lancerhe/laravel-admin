@@ -89,7 +89,9 @@ class UsersController extends Controller {
         $user->name = $request->post('name');
         $user->email = $request->post('email');
         if ($request->post('password')) {
+            $originalPassword = $user->password;
             $user->password = bcrypt($request->post('password'));
+            Auth::logoutOtherDevices($originalPassword);
         }
         DB::transaction(function () use ($user, $roleIds, $permissionIds) {
             $user->save();
