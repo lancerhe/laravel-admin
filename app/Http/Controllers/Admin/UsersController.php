@@ -16,9 +16,26 @@ class UsersController extends Controller {
         $this->middleware('auth');
     }
 
-    public function index() {
-        $users = User::query()->paginate(30);
-        return view('admin.users.index', compact('users'));
+    public function index(Request $request) {
+        $filterQuery = $request->get("query");
+        $sortBy = $request->get('sort_by') ? $request->get('sort_by') : 'id';
+        $sort = $request->get('sort') ? $request->get('sort') : 'asc';
+
+        $builder = User::query();
+        if ($filterQuery) {
+            $searchQuery = "%{$filterQuery}%";
+            $builder->where(function ($query) use ($searchQuery) {
+                $query->where('name', 'like', $searchQuery)
+                    ->orWhere('email', 'like', $searchQuery);
+            });
+        }
+
+        $users = $builder
+            ->orderBy($sortBy, $sort)
+            ->paginate(30);
+        return view('admin.users.index', compact('users'
+            , 'filterQuery'
+            , 'sortBy', 'sort'));
     }
 
     public function show($id) {
@@ -91,7 +108,11 @@ class UsersController extends Controller {
         if ($request->post('password')) {
             $originalPassword = $user->password;
             $user->password = bcrypt($request->post('password'));
+
+            $updateUserId = Auth::user()->id;
+            Auth::loginUsingId($user->id, $remember = false);
             Auth::logoutOtherDevices($originalPassword);
+            Auth::loginUsingId($updateUserId, $remember = false);
         }
         DB::transaction(function () use ($user, $roleIds, $permissionIds) {
             $user->save();

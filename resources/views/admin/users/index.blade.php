@@ -17,8 +17,13 @@
                 <div class="box-header">
                     <h3 class="box-title">{{ $functionTitle }}</h3>
                     <div class="box-tools">
-                        <form>
-                            <div class="input-group input-group-sm" style="width: 50px;">
+                        <form id="form-search" method="get" action="{{ route('admin.users.index') }}"
+                              class="form-inline">
+                            {{ App\Libraries\SearchFormWidget::createSortHiddenValue($sortBy, $sort) }}
+                            <div class="input-group input-group-sm">
+                                {{ App\Libraries\SearchFormWidget::createFuzzyQuery($filterQuery, route('admin.users.index'), '昵称/用户名') }}
+                            </div>
+                            <div class="input-group input-group-sm">
                                 <div class="input-group-btn">
                                     <a class="btn bg-purple btn-xs" href="{{ route('admin.users.create')}}">添加新用户</a>
                                 </div>
@@ -34,8 +39,12 @@
                             <th width="5%">ID</th>
                             <th width="20%">昵称</th>
                             <th width="25%">用户名</th>
-                            <th width="15%">Created At</th>
-                            <th width="15%">Updated At</th>
+                            <th width="15%" class="th-sortable" data-sort-by="created_at" data-toggle="col-sort">Created At
+                                {{ App\Libraries\SearchFormWidget::createSortButton($sortBy, $sort, 'created_at') }}
+                            </th>
+                            <th width="15%" class="th-sortable" data-sort-by="updated_at" data-toggle="col-sort">Updated At
+                                {{ App\Libraries\SearchFormWidget::createSortButton($sortBy, $sort, 'updated_at') }}
+                            </th>
                             <th width="20%">操作</th>
                         </tr>
                         @foreach ($users as $user)

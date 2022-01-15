@@ -334,6 +334,21 @@
                 format: "yyyy-mm-dd"//日期格式，详见 http://bootstrap-datepicker.readthedocs.org/en/release/options.html#format
             });
 
+            $("[data-toggle='col-sort']").on('click', function () {
+                var sortBy = $(this).attr('data-sort-by');
+                var sort = $("#form-search [name='sort']").val();
+                sortBy = typeof sortBy === 'undefined' ? "" : sortBy;
+                if (sort === '')
+                    sort = 'asc';
+                else if (sort === 'asc')
+                    sort = 'desc';
+                else if (sort === 'desc')
+                    sort = 'asc';
+                $("#form-search [name='sort']").val(sort);
+                $("#form-search [name='sort_by']").val(sortBy);
+                $("#form-search [type='submit']").trigger('click');
+            });
+
             $("form[data-confirm]").submit(function (e) {
                 var currentForm = this;
                 var message = $(this).attr('data-confirm');
